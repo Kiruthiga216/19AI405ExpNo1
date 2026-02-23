@@ -1,6 +1,6 @@
 <h1>ExpNo 1 :Developing AI Agent with PEAS Description</h1>
-<h3>Name: Saravanan N</h3>
-<h3>Register Number/Staff Id: TSML006</h3>
+<h3>Name: KIRUTHIGA.B</h3>
+<h3>Register Number: 212224040160</h3>
 
 
 <h3>AIM:</h3>
@@ -40,3 +40,53 @@
 <p>Treat unhealthy patients in each room. And check for the unhealthy patients in random room</p>
 <h3>STEP 5:</h3>
 <p>Measure the performance parameters: For each treatment performance incremented, for each movement performance decremented</p>
+
+<H3>PROGRAM</H3>
+
+<pre><code>
+import random
+
+performance = 0
+
+rooms = {
+    "Room A": random.uniform(97, 102),
+    "Room B": random.uniform(97, 102)
+}
+
+location = random.choice(["Room A", "Room B"])
+
+print("Room Temperatures:")
+for room in rooms:
+    print(room, ":", round(rooms[room], 2), "°F")
+
+print("\nAgent starting in", location)
+
+def treat(room):
+    global performance
+    if rooms[room] > 98.5:
+        print(room, ": Patient unhealthy → Medicine prescribed")
+        performance += 1
+        rooms[room] = 98.5
+    else:
+        print(room, ": Patient healthy")
+
+treat(location)
+
+other_room = "Room A" if location == "Room B" else "Room B"
+print("Moving to", other_room)
+performance -= 1
+
+treat(other_room)
+
+print("\nFinal Performance:", performance)
+</code></pre>
+
+<h3>OUTPUT</h3>
+
+<img width="572" height="414" alt="Screenshot 2026-02-23 103008" src="https://github.com/user-attachments/assets/eb4b6729-9a2e-473a-a08c-7d448f2299de" />
+
+<h3>RESULT</h3>
+
+<p>Thus, the Medicine Prescribing Agent correctly treats unhealthy patients in two rooms and updates performance. Performance increases for treatment and decreases for movement, reflecting the agent’s efficiency.</p>
+
+
